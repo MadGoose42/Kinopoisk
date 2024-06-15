@@ -1,9 +1,10 @@
 ﻿using System.Net.Http;
 using System.Diagnostics.Metrics;
+using static System.Net.WebRequestMethods;
 
 namespace Kinopoisk.Core
 {
-    public record MovieFetcherFacade
+    public record MovieFetcherFacade (IMovieApiFetcher Fetcher)
     {
         //private readonly HttpClient httpClient;
 
@@ -21,21 +22,5 @@ namespace Kinopoisk.Core
         {
             throw null;
         }
-    }
-
-    public class KinopoiskFetcher
-    {
-        private readonly HttpClient httpClient;
-
-        public KinopoiskFetcher(IHttpClientFactory HttpFac)
-        {
-            httpClient = HttpFac.CreateClient();
-        }
-
-
-    }
-
-    public interface IQueryOptions
-    {
     }
 }
